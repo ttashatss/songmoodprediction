@@ -18,13 +18,9 @@ INLOVE_LINK = 'https://open.spotify.com/playlist/6adbmqEp3RbfD1jeaH3kXx?si=28f4a
 HEARTBROKEN_LINK = 'https://open.spotify.com/playlist/3c0Nv5CY6TIaRszlTZbUFk?si=10c2eeb434d94f9f'
 NONROMANCE_LINK = 'https://open.spotify.com/playlist/2ONwEw1Rw8EQS1nWjDxlzQ?si=a38ded2c46dd4c9d'
 
-# links = [INLOVE_LINK, HEARTBROKEN_LINK, NONROMANCE_LINK]
-# mood = ['in love', 'heartbroken', 'non-romance']
-# csv = ['inlove.csv', 'heartbroken.csv', 'nonromance.csv']
-
-links = [NONROMANCE_LINK]
-mood = ['non-romance']
-csv = ['nonromance.csv']
+links = [INLOVE_LINK, HEARTBROKEN_LINK, NONROMANCE_LINK]
+mood = ['in love', 'heartbroken', 'non-romance']
+csv = ['inlove.csv', 'heartbroken.csv', 'nonromance.csv']
 
 token = os.getenv("GENIUS_TOKEN")
 genius = Genius(token)
@@ -51,6 +47,7 @@ def get_tracks(playlist_link):
 
     return tracks
 
+# get list of songs from album and search for lyrics for each song using song title and artist name
 for i in range(len(links)):
     tracks = get_tracks(links[i])
     df = pd.DataFrame(tracks, columns=['title','artist'])
